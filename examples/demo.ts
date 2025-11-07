@@ -1,20 +1,12 @@
 import { X402MultiSig, type PaymentRequirements } from '../src/index.js';
-
 async function main() {
-  try {
-    // Configuration section (please replace the following placeholders according to actual situation)
-    // X402 Canister ID (required, please replace with your actual Canister ID, i.e., organization ID)
-    const x402CanisterId = 'unn7l-aqaaa-aaaau-ab7ka-cai';
-    // Vault ID (wallet ID, please replace with your actual Vault ID)
-    const vaultId = 1n;
-    // Payer address (please replace with your multi-signature wallet address on Base Sepolia)
-    const fromAddress: `0x${string}` = '0x92e07732b23258Ac4c8b5856a11e1D0F5D72749d';
-    // Payee address (payment address for the paid service)
-    const payToAddress = '0x2f795904540BE35c3B66A9643F58DAC14E8fA30B';
-    // Paid service API URL
-    const apiUrl = 'http://35.93.41.95:4021/weather';
-    // Payment requirements configuration (compliant with X402 protocol standard)
-    const paymentRequirements: PaymentRequirements = {
+  try { // Configuration section (please replace the following placeholders according to actual situation)
+    const x402CanisterId = 'unn7l-aqaaa-aaaau-ab7ka-cai'; // Your Canister ID (required, replace with your Canister ID, i.e., organization ID)
+    const vaultId = 1n; // Vault ID (wallet ID, replace with your actual using Vault ID)
+    const fromAddress: `0x${string}` = '0x92e07732b23258Ac4c8b5856a11e1D0F5D72749d'; // Payer address
+    const payToAddress = '0x2f795904540BE35c3B66A9643F58DAC14E8fA30B'; // Payee address (payment address for the paid service)
+    const apiUrl = 'http://35.93.41.95:4021/weather'; // Paid service API URL
+    const paymentRequirements: PaymentRequirements = { // Payment requirements configuration
       scheme: 'exact',
       network: 'base-sepolia',
       maxAmountRequired: '1000', // 1000 (0.001 USDC with 6 decimals)
@@ -30,13 +22,11 @@ async function main() {
         version: '2',
       },
     };
-
     const bot = await X402MultiSig.create({ // Call SDK to create bot client
       x402CanisterId,
       displayName: 'X402 Payment Bot',
       username: 'payment_bot',
     });
-
     const serviceResponse = await bot.callPaidService({ // Call SDK to paid service
       vaultId,
       fromAddress,
@@ -48,7 +38,7 @@ async function main() {
       //   interval: 3000,    // Polling interval in milliseconds (default: 3000)
       // }
     });
-    console.log('Payment verification: ✅ Passed');
+    console.log('Payment verification: Passed');
     console.log('Response data:');
     console.log(JSON.stringify(serviceResponse, null, 2));
   } catch (error) {
