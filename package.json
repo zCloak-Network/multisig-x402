@@ -1,10 +1,13 @@
 {
-  "name": "multisig-x402",
+  "name": "@zcloak/multisig-x402",
   "version": "1.0.0",
   "description": "Minimal SDK for AI agents to interact with X402 multi-signature wallet on Internet Computer",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
