@@ -1,0 +1,58 @@
+# Source files
+src/
+*.ts
+!*.d.ts
+
+# Development files
+.env
+.env.*
+tsconfig.json
+tsx.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Tests
+tests/
+*.test.ts
+*.spec.ts
+
+# Examples (optional - comment out if you want to include examples)
+examples/
+
+# Documentation source
+docs/
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Dependencies
+node_modules/
+
+# Build artifacts
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Identity storage (important - never publish identities!)
+.multisig-x402/
+
+# Other
+*.md
+!README.md
