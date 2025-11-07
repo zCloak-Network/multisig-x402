@@ -17,6 +17,8 @@ You need to configure your own multisignature wallet and add the bot's Principal
 Please do not share your private key with others in production projects.
 
 ```bash
+npm install
+
 npm run demo
 ```
 
