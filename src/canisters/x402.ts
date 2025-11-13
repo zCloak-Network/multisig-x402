@@ -126,8 +126,40 @@ export class X402Client {
       );
       return requestId;
     } catch (error) {
-      console.error('❌ Failed to create X402 signature request:', error);
-      throw error;
+      // Extract detailed error information
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      const errorStack = error instanceof Error ? error.stack : undefined;
+
+      // Log detailed error for debugging
+      console.error('❌ Failed to create X402 signature request');
+      console.error(`   Error: ${errorMessage}`);
+      if (errorStack) {
+        console.error(`   Stack: ${errorStack}`);
+      }
+
+      // Throw a more informative error
+      throw new Error(
+        `Failed to create X402 signature request\n\n` +
+        `Error Details:\n` +
+        `  ${errorMessage}\n\n` +
+        `Request Context:\n` +
+        `  Canister ID: ${this.canisterId.toText()}\n` +
+        `  Vault ID: ${params.vaultId}\n` +
+        `  Recipient Address: ${params.to}\n` +
+        `  Transfer Amount: ${params.value}\n` +
+        `  Verifying Contract: ${params.verifyingContract}\n` +
+        `  Chain ID: ${params.domainChainId}\n\n` +
+        `Possible Causes:\n` +
+        `  1. Canister does not exist or is inaccessible\n` +
+        `  2. Vault ID does not exist or lacks permission\n` +
+        `  3. Network connection issue\n` +
+        `  4. Invalid parameter format\n\n` +
+        `Recommendations:\n` +
+        `  - Verify Canister ID is correct\n` +
+        `  - Confirm current identity has permission to operate this Vault\n` +
+        `  - Check network connection is stable\n` +
+        `  - Validate parameter formats meet requirements`
+      );
     }
   }
 
@@ -165,8 +197,32 @@ export class X402Client {
       }
       return null;
     } catch (error) {
-      console.error(`❌ Failed to query request ${requestId}:`, error);
-      throw error;
+      // Extract detailed error information
+      const errorMessage = error instanceof Error ? error.message : String(error);
+
+      // Log error (unless in silent mode)
+      if (!silent) {
+        console.error(`❌ Failed to query request ${requestId}`);
+        console.error(`   Error: ${errorMessage}`);
+      }
+
+      // Throw a more informative error
+      throw new Error(
+        `Failed to query X402 signature request\n\n` +
+        `Error Details:\n` +
+        `  ${errorMessage}\n\n` +
+        `Request Context:\n` +
+        `  Canister ID: ${this.canisterId.toText()}\n` +
+        `  Request ID: ${requestId}\n\n` +
+        `Possible Causes:\n` +
+        `  1. Canister does not exist or is inaccessible\n` +
+        `  2. Network connection issue\n` +
+        `  3. Request ID does not exist\n\n` +
+        `Recommendations:\n` +
+        `  - Verify Canister ID is correct\n` +
+        `  - Validate Request ID is valid\n` +
+        `  - Confirm network connection is stable`
+      );
     }
   }
 }

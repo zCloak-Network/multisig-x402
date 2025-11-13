@@ -23,6 +23,7 @@ import { CHAIN_ID_TO_NETWORK, isSupportedToken, getEIP712DomainParams, DEFAULT_C
 import { preparePaymentHeader } from 'x402/client';
 import { encodePayment } from 'x402/schemes';
 import { toHex } from 'viem';
+import { validateSignRequestParams } from './utils/validation.js';
 
 /**
  * Signature Request Parameters (Full Version)
@@ -403,6 +404,29 @@ export class X402MultiSig {
   async createSignRequest(params: SignRequestParams): Promise<bigint> {
     console.log('Creating multi-signature request...');
     console.log('');
+
+    // ==================== Step 0: Input Validation ====================
+    // Validate all input parameters before processing
+    try {
+      validateSignRequestParams(params);
+    } catch (error) {
+      // Re-throw validation errors with context
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      throw new Error(
+        `❌ Input parameter validation failed:\n${errorMessage}\n` +
+        `\nPlease check the following parameters:\n` +
+        `- vaultId: ${params.vaultId}\n` +
+        `- to: ${params.to}\n` +
+        `- value: ${params.value}\n` +
+        `- validAfter: ${params.validAfter}\n` +
+        `- validBefore: ${params.validBefore}\n` +
+        `- nonce: ${params.nonce}\n` +
+        `- verifyingContract: ${params.verifyingContract}\n` +
+        `- domainChainId: ${params.domainChainId}\n` +
+        `- domainName: ${params.domainName}\n` +
+        `- domainVersion: ${params.domainVersion}`
+      );
+    }
 
     // ==================== Step 1: Verify Network Support ====================
     // Identify network from domainChainId

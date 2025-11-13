@@ -99,6 +99,30 @@ export {
   generateNonce,
 } from './utils/hex.js';
 
+/**
+ * Input validation utility functions
+ * Used to validate parameters before submitting requests
+ *
+ * The SDK automatically validates all parameters internally, but these utility functions are exported
+ * for use in the following scenarios:
+ * - Pre-validating parameters before calling SDK methods
+ * - Custom validation logic in your application
+ * - Building wrapper functions with additional validation
+ */
+export {
+  isValidEthereumAddress,
+  validateEthereumAddress,
+  validateHexValue,
+  validateTimestamps,
+  validateNonce,
+  validateVaultId,
+  validateContractAddress,
+  validateDomainChainId,
+  validateDomainParams,
+  validateSignRequestParams,
+  type SignRequestParamsForValidation,
+} from './utils/validation.js';
+
 // ==================== Version Information ====================
 
 /**
