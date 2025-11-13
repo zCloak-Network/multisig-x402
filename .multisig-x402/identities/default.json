@@ -1,11 +1,11 @@
 {
   "keyData": [
-    "302a300506032b6570032100e49d276dbe93f4ef56b9674e13632e6e1f3c1a9b3e628e170e48d0225202e45f",
-    "4de565022edc1014ee5c9be09dc176564e41e4878dbfeef061be46978c83c410"
+    "302a300506032b6570032100b554a75a32a5d11ffc457efa895e3d8fe1143d3105ca7dea99a7ad3b8f39b40d",
+    "35a451c131c6c233fc9b7d3659811dfa38e041e06e1fd87d5b47db09e2e472e9"
   ],
-  "principal": "mbbaa-2apdg-7yqvv-fvpj6-x4sqc-dclhc-2btgs-zdza4-apwe2-fwrcs-oae",
-  "username": "mybot",
-  "displayName": "My X402 Bot",
-  "createdAt": "2025-11-05T08:59:27.317Z",
-  "updatedAt": "2025-11-05T08:59:27.318Z"
+  "principal": "bmxc6-xcd6i-gsewm-i3azg-jbax4-fthim-yrwbd-fto3v-d3vfg-ymfxo-bqe",
+  "username": "payment_bot",
+  "displayName": "X402 Payment Bot",
+  "createdAt": "2025-11-13T07:32:37.161Z",
+  "updatedAt": "2025-11-13T07:32:37.162Z"
 }

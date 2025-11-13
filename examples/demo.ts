@@ -1,9 +1,9 @@
 import { X402MultiSig, type PaymentRequirements } from '../src/index.js';
 async function main() {
   try { // Configuration section (please replace the following placeholders according to actual situation)
-    const x402CanisterId = 'unn7l-aqaaa-aaaau-ab7ka-cai'; // Your Canister ID (required, replace with your Canister ID, i.e., organization ID)
-    const vaultId = 1n; // Vault ID (wallet ID, replace with your actual using Vault ID)
-    const fromAddress: `0x${string}` = '0x92e07732b23258Ac4c8b5856a11e1D0F5D72749d'; // Payer address
+    const x402CanisterId = 'pvs3u-xaaaa-aaaab-acbna-cai'; // Your Canister ID (required, replace with your Canister ID, i.e., organization ID)
+    const vaultId = 2n; // Vault ID (wallet ID, replace with your actual using Vault ID)
+    const fromAddress: `0x${string}` = '0x54f045da3C02C3BDF5c3282C57cBdF41A0d53DF4'; // Payer address
     const payToAddress = '0x2f795904540BE35c3B66A9643F58DAC14E8fA30B'; // Payee address (payment address for the paid service)
     const apiUrl = 'http://35.93.41.95:4021/weather'; // Paid service API URL
     const paymentRequirements: PaymentRequirements = { // Payment requirements configuration

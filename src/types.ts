@@ -358,7 +358,7 @@ export interface RequestRecord {
  */
 export const DEFAULT_CONFIG = {
   /** Default Register Canister ID (used for registering and managing user identities) */
-  registerCanisterId: 'vkxj3-biaaa-aaaau-abyra-cai',
+  registerCanisterId: 'jsinc-qqaaa-aaaab-ab55q-cai',
 
   /** Default identity name */
   identityName: 'default',
