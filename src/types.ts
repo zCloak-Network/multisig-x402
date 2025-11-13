@@ -149,7 +149,7 @@ export const SUPPORTED_TOKENS: Record<SupportedNetwork, TokenConfig[]> = {
       decimals: 6,
     },
     {
-      name: 'Wrapped SOL',
+      name: 'SOL',
       symbol: 'SOL',
       address: '0x0000000000000000000000000000000000000000',
       decimals: 9,
